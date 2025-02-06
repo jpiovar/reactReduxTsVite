@@ -1,0 +1,9 @@
+.search-raw {
+  display: block;
+}
+
+.search-raw span{
+  display: inline-block;
+  width: 150px;
+  padding-right: 4px;
+}

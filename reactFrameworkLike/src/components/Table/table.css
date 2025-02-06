@@ -1,0 +1,10 @@
+.table-raw {
+  display: block;
+}
+
+.table-raw th, .table-raw td {
+  border: 1px solid black;
+  width: 150px;
+  margin: 0;
+  padding: 0;
+}
