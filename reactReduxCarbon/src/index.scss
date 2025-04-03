@@ -1,8 +1,15 @@
-@use '@carbon/react';
-@use '@carbon/react/scss/breakpoint' as *;
-
-@use '@carbon/styles/scss/config' as carbon;
 @use '@carbon/styles/scss/themes';
+@use '@carbon/styles/scss/theme' with (
+  $theme: (
+    'background': #e2e2e2,
+    'text-primary': #ffffff,
+  )
+);
+
+@use '@carbon/react';
+@use '@carbon/styles';
+
+
 
 
 :root {
