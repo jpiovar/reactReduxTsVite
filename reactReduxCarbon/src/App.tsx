@@ -1,7 +1,8 @@
+import { Button, Stack } from '@carbon/react';
 import './App.scss'
 import SearchFilter from './components/SearchFilter/searchFilter';
 import Table from './components/Table/table';
-import { Button } from 'carbon-components-react';
+import { Add } from '@carbon/icons-react';
 
 
 function App() {
@@ -9,7 +10,10 @@ function App() {
   return (
     <>
       <div>
-      <Button>Click Me</Button>
+      <Stack gap={7}>
+      <Button>Click Me1</Button>
+      <Button renderIcon={Add}>Click Me2</Button>
+      </Stack>
         <SearchFilter />
         <Table />
       </div>
