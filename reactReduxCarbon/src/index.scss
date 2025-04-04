@@ -1,9 +1,10 @@
 @use '@carbon/styles/scss/themes';
 @use '@carbon/styles/scss/theme' with (
-  $theme: (
-    'background': #e2e2e2,
-    'text-primary': #ffffff,
-  )
+  // $theme: (
+  //   'background': #e2e2e2,
+  //   'text-primary': #ffffff,
+  // )
+  $theme: themes.$g100
 );
 
 @use '@carbon/react';
