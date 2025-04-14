@@ -1,12 +1,29 @@
-import { Button, Stack } from "@carbon/react";
+import { Button, Stack, Theme } from "@carbon/react";
 import "./App.scss";
 import SearchFilter from "./components/SearchFilter/searchFilter";
 import Table from "./components/Table/table";
 import { Add } from "@carbon/icons-react";
 import * as echarts from "echarts";
 import ChartComponent from "./components/ChartComponent/chartComponent";
+import { useEffect, useState } from "react";
+import ThemeSwitcher from "./components/ThemeSwitcher/themeSwitcher";
 
 function App() {
+
+  const [theme, setTheme] = useState<'white' | 'g10' | 'g90' | 'g100'>('g10');
+
+  // Optional: load from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('carbon-theme') as any;
+    if (saved) setTheme(saved);
+  }, []);
+
+  const handleThemeChange = (newTheme: typeof theme) => {
+    setTheme(newTheme);
+    localStorage.setItem('carbon-theme', newTheme);
+  };
+
+
   const barChartOptions: echarts.EChartsOption = {
     xAxis: {
       type: "category",
@@ -60,6 +77,9 @@ function App() {
 
   return (
     <>
+    <Theme theme={theme}>
+      <div className="app">
+        <ThemeSwitcher theme={theme} onChange={handleThemeChange} />
       <div>
         <div style={{ width: "800px", height: "1000px", margin: "auto" }}>
           <h1>ECharts in React TypeScript</h1>
@@ -73,6 +93,8 @@ function App() {
         <SearchFilter />
         <Table />
       </div>
+      </div>
+    </Theme>
     </>
   );
 }
