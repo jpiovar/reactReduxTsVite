@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './searchFilter.scss'
 import { useDispatch } from 'react-redux';
-import { TableLoadGet } from '../../store/table/table.actions';
+import { TableLoadGet } from '../../../store/table/table.actions';
 function SearchFilter() {
   const dispatch = useDispatch();
   const initialValues =  {    
