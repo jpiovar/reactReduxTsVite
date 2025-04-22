@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { StartSpinner, StopSpinner } from "./store/spinner/spinner.actions";
 import useGlobalDOMEvents from "./core/services/useGlobalDOMEvents";
 import { barChartOptions, linearChartOptions } from "./assets/mock/charts-data";
+import CustomHeader from "./core/components/customHeader/CustomHeader";
 
 function App() {
   const [theme, setTheme] = useState<"white" | "g10" | "g90" | "g100">("g10");
@@ -31,12 +32,11 @@ function App() {
       // if (evt.key === 'Escape') {
       // }
     },
-    
   });
 
   useEffect(() => {
-    const saved = localStorage.getItem("carbon-theme") as any;
-    if (saved) setTheme(saved);
+    // const saved = localStorage.getItem("carbon-theme") as any;
+    // if (saved) setTheme(saved);
 
     dispatch(StartSpinner());
     setTimeout(() => {
@@ -54,19 +54,22 @@ function App() {
       <Theme theme={theme}>
         <Spinner />
         <div className="app">
-          <ThemeSwitcher theme={theme} onChange={handleThemeChange} />
-          <div>
-            <div style={{ width: "800px", height: "1000px", margin: "auto" }}>
-              <h1>ECharts in React TypeScript</h1>
-              <ChartComponent options={barChartOptions} />
-              <ChartComponent options={linearChartOptions} />
+          <CustomHeader />
+          <div id="custom-body">
+            <ThemeSwitcher theme={theme} onChange={handleThemeChange} />
+            <div>
+              <div style={{ width: "800px", height: "1000px", margin: "auto" }}>
+                <h1>ECharts in React TypeScript</h1>
+                <ChartComponent options={barChartOptions} />
+                <ChartComponent options={linearChartOptions} />
+              </div>
+              <Stack gap={7}>
+                <Button>Click Me1</Button>
+                <Button renderIcon={Add}>Click Me2</Button>
+              </Stack>
+              <SearchFilter />
+              <Table />
             </div>
-            <Stack gap={7}>
-              <Button>Click Me1</Button>
-              <Button renderIcon={Add}>Click Me2</Button>
-            </Stack>
-            <SearchFilter />
-            <Table />
           </div>
         </div>
       </Theme>
