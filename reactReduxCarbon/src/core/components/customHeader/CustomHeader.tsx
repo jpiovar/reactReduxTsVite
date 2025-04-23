@@ -86,6 +86,18 @@ function CustomHeader(): any {
             </HeaderMenu>
           </HeaderNavigation>
           <HeaderGlobalBar className="header-global-bar">
+            <HeaderMenu
+              className="profile-menu"
+              aria-label="User menu"
+              menuLinkName=""
+              renderMenuContent={() => <Avatar name="Jane Doe" size={32} />}
+            >
+              <HeaderMenuItem href="/profile">Profile</HeaderMenuItem>
+              <HeaderMenuItem href="/settings">Settings</HeaderMenuItem>
+              <HeaderMenuItem href="/logout">Logout</HeaderMenuItem>
+            </HeaderMenu>
+          </HeaderGlobalBar>
+          {/* <HeaderGlobalBar className="header-global-bar">
             <HeaderGlobalAction
               aria-label="User"
               className="header-user"
@@ -102,7 +114,7 @@ function CustomHeader(): any {
                   zIndex: 999,
                 }}
               >
-                {/* <OverflowMenu open direction="bottom" flipped> */}
+              
                   <OverflowMenuItem
                     itemText="Profile"
                     onClick={() => console.log("Go to profile")}
@@ -116,10 +128,10 @@ function CustomHeader(): any {
                     hasDivider
                     onClick={() => console.log("Log out")}
                   />
-                {/* </OverflowMenu> */}
+            
               </div>
             )}
-          </HeaderGlobalBar>
+          </HeaderGlobalBar> */}
         </Header>
         <SideNav
           className="side-nav"
