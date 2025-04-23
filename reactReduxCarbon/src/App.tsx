@@ -35,8 +35,8 @@ function App() {
   });
 
   useEffect(() => {
-    // const saved = localStorage.getItem("carbon-theme") as any;
-    // if (saved) setTheme(saved);
+    const saved = localStorage.getItem("carbon-theme") as any;
+    if (saved) setTheme(saved);
 
     dispatch(StartSpinner());
     setTimeout(() => {
