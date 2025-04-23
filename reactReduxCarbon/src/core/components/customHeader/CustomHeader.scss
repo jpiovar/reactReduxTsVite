@@ -1,3 +1,25 @@
-#custom-header {
+.custom-header {
 
+  .header-menu-btn {
+    display: inline-block;
+    text-align: center;
+  }
+
+  .header-navigation {
+    ul {
+      li {
+        span {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  .side-nav {
+    display: none;
+
+    &.cds--side-nav--expanded {
+      display: block;
+    }
+  }
 }

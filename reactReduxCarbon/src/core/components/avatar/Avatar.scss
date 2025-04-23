@@ -1,0 +1,12 @@
+@use '@carbon/styles/scss/colors' as *;
+
+.custom-avatar {
+  background-color: $blue-60;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  user-select: none;
+}
