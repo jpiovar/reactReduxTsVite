@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './table.scss'
+import './Table.scss'
 import { useSelector } from 'react-redux';
 
 interface Record {

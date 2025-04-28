@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import './searchFilter.scss'
+import './SearchFilter.scss'
 import { useDispatch } from 'react-redux';
 import { TableLoadGet } from '../../../store/table/table.actions';
 function SearchFilter() {

@@ -1,17 +1,19 @@
 import { Button, Stack, Theme } from "@carbon/react";
 import "./App.scss";
-import SearchFilter from "./shared/components/SearchFilter/searchFilter";
-import Table from "./shared/components/Table/table";
+import SearchFilter from "./shared/components/searchFilter/SearchFilter";
+import Table from "./shared/components/table/Table";
 import { Add } from "@carbon/icons-react";
-import ChartComponent from "./shared/components/ChartComponent/chartComponent";
+import ChartComponent from "./shared/components/chartComponent/ChartComponent";
 import { useEffect, useState } from "react";
-import ThemeSwitcher from "./shared/components/ThemeSwitcher/themeSwitcher";
 import Spinner from "./core/components/spinner/Spinner";
 import { useDispatch } from "react-redux";
 import { StartSpinner, StopSpinner } from "./store/spinner/spinner.actions";
 import useGlobalDOMEvents from "./core/services/useGlobalDOMEvents";
 import { barChartOptions, linearChartOptions } from "./assets/mock/charts-data";
 import CustomHeader from "./core/components/customHeader/CustomHeader";
+import ThemeSwitcher from "./shared/components/themeSwitcher/ThemeSwitcherP";
+import { Route, Routes } from "react-router-dom";
+import Example from "./pages/example/Example";
 
 function App() {
   const [theme, setTheme] = useState<"white" | "g10" | "g90" | "g100">("g10");
@@ -56,8 +58,8 @@ function App() {
         <div className="app">
           <CustomHeader />
           <div id="custom-body">
-            <ThemeSwitcher theme={theme} onChange={handleThemeChange} />
-            <div>
+            {/* <ThemeSwitcher theme={theme} onChange={handleThemeChange} /> */}
+            {/* <div>
               <div style={{ width: "800px", height: "1000px", margin: "auto" }}>
                 <h1>ECharts in React TypeScript</h1>
                 <ChartComponent options={barChartOptions} />
@@ -69,7 +71,11 @@ function App() {
               </Stack>
               <SearchFilter />
               <Table />
-            </div>
+            </div> */}
+
+            <Routes>
+              <Route path="/example" element={<Example />} />
+            </Routes>
           </div>
         </div>
       </Theme>
