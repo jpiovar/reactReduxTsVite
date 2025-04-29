@@ -9,30 +9,37 @@ import {
   SideNavItems,
   SideNavLink,
   HeaderMenuButton,
-  HeaderGlobalAction,
+  // HeaderGlobalAction,
   HeaderGlobalBar,
   HeaderMenu,
-  OverflowMenu,
-  OverflowMenuItem,
+  // OverflowMenu,
+  // OverflowMenuItem
 } from "@carbon/react";
 import { Dashboard } from "@carbon/icons-react";
 import { Link } from "react-router-dom";
 
 import "./CustomHeader.scss";
 import Avatar from "../avatar/Avatar";
+import ThemeSwitcherToggler from "../../../shared/components/themeSwitcher/ThemeSwitcherToggler";
 
 function CustomHeader(): any {
+
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  const [openProfile, setOpenProfile] = useState(false);
+  // const [openProfile, setOpenProfile] = useState(false);
 
   const toggleSideNav = () => {
     debugger;
     setIsSideNavOpen((prev: any) => !prev);
   };
 
-  const toggleProfile = () => {
-    setOpenProfile((prev) => !prev);
-  };
+  // const toggleProfile = () => {
+  //   setOpenProfile((prev) => !prev);
+  // };
+
+
+  useEffect(() => {
+
+  }, []);
 
   useEffect(() => {
     debugger;
@@ -84,6 +91,9 @@ function CustomHeader(): any {
                 Tags
               </HeaderMenuItem>
             </HeaderMenu>
+            <HeaderMenuItem>
+              <ThemeSwitcherToggler />
+            </HeaderMenuItem>
           </HeaderNavigation>
           <HeaderGlobalBar className="header-global-bar">
             <HeaderMenu

@@ -1,23 +1,21 @@
-import { Button, Stack, Theme } from "@carbon/react";
+import { Theme } from "@carbon/react";
 import "./App.scss";
-import SearchFilter from "./shared/components/searchFilter/SearchFilter";
-import Table from "./shared/components/table/Table";
-import { Add } from "@carbon/icons-react";
-import ChartComponent from "./shared/components/chartComponent/ChartComponent";
 import { useEffect, useState } from "react";
 import Spinner from "./core/components/spinner/Spinner";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { StartSpinner, StopSpinner } from "./store/spinner/spinner.actions";
 import useGlobalDOMEvents from "./core/services/useGlobalDOMEvents";
-import { barChartOptions, linearChartOptions } from "./assets/mock/charts-data";
 import CustomHeader from "./core/components/customHeader/CustomHeader";
-import ThemeSwitcher from "./shared/components/themeSwitcher/ThemeSwitcherP";
 import { Route, Routes } from "react-router-dom";
 import Example from "./pages/example/Example";
 
 function App() {
-  const [theme, setTheme] = useState<"white" | "g10" | "g90" | "g100">("g10");
+  const themes: any = { light: {label: 'Light theme', value: 'white'}, dark: {label: 'Dark theme', value: 'g100'}};
+  const [theme, setTheme] = useState(themes.light.value);
+
   const dispatch = useDispatch();
+  const themeReducer = useSelector((state: any) => state?.themeReducer);
+
 
   useGlobalDOMEvents({
     load(evt: any) {
@@ -37,19 +35,17 @@ function App() {
   });
 
   useEffect(() => {
-    const saved = localStorage.getItem("carbon-theme") as any;
-    if (saved) setTheme(saved);
-
     dispatch(StartSpinner());
     setTimeout(() => {
       dispatch(StopSpinner());
     }, 2000);
   }, []);
 
-  const handleThemeChange = (newTheme: typeof theme) => {
-    setTheme(newTheme);
-    localStorage.setItem("carbon-theme", newTheme);
-  };
+  useEffect(() => { 
+    debugger;
+    const themeData = themeReducer?.data;
+    setTheme(themes[themeData]?.value);
+  }, [themeReducer]);
 
   return (
     <>
@@ -58,21 +54,6 @@ function App() {
         <div className="app">
           <CustomHeader />
           <div id="custom-body">
-            {/* <ThemeSwitcher theme={theme} onChange={handleThemeChange} /> */}
-            {/* <div>
-              <div style={{ width: "800px", height: "1000px", margin: "auto" }}>
-                <h1>ECharts in React TypeScript</h1>
-                <ChartComponent options={barChartOptions} />
-                <ChartComponent options={linearChartOptions} />
-              </div>
-              <Stack gap={7}>
-                <Button>Click Me1</Button>
-                <Button renderIcon={Add}>Click Me2</Button>
-              </Stack>
-              <SearchFilter />
-              <Table />
-            </div> */}
-
             <Routes>
               <Route path="/example" element={<Example />} />
             </Routes>
